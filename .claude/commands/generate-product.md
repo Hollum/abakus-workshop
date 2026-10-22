@@ -21,7 +21,7 @@ Create a fictional product for a software development workshop. Skilled students
 
    The brief describes the product from the user's side only. Every question about how to build it (technology, data model, design, tickets) stays open for the students. The brief is their starting point, not the solution.
 
-4. Tell the user the product name, that the next step is `/grill-with-docs`, and that they can write `regenerate` to get a different product.
+4. Tell the user the product name and that the next step is `/grill-with-docs`. Always end the message by telling the user that they can write `regenerate` to get a new product description. Do this every time you write the brief, also after a `regenerate`.
 
 5. If the user writes `regenerate`, go back to step 1 and make a new product. Use the words after `regenerate`, if there are any. Otherwise, brainstorm new lists and run the shell command again, until you get a combination that you have not used in this session. Replace the old brief in `workshop/PRODUCT_BRIEF.md`.
 
