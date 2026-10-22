@@ -21,13 +21,15 @@ docker build -t abakus-postgres .
 A Docker volume stores data separately from the container.
 The `-v` flag below stores database data in the `abakus-postgres-data` volume.
 The password below is for local development.
+The `-p` flag makes the database available on port 55432 on your machine.
+PostgreSQL usually uses port 5432, but another database on your machine can already use that port.
 
 Start PostgreSQL:
 
 ```sh
 docker run -d \
   --name abakus-postgres \
-  -p 127.0.0.1:5432:5432 \
+  -p 127.0.0.1:55432:5432 \
   -e POSTGRES_PASSWORD=local-dev-password \
   -v abakus-postgres-data:/var/lib/postgresql \
   abakus-postgres
@@ -45,7 +47,7 @@ If startup fails, read the output of `docker logs abakus-postgres`.
 Use this connection URL (the database address and login details):
 
 ```text
-postgresql://abakus:local-dev-password@localhost:5432/abakus_workshop
+postgresql://abakus:local-dev-password@localhost:55432/abakus_workshop
 ```
 
 A SQL shell lets you type database commands.
@@ -69,20 +71,23 @@ MCP (Model Context Protocol) connects AI applications to tools.
 An MCP client is an application that uses those tools.
 The Postgres MCP server gives the client access to PostgreSQL.
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) to get the `uvx` command.
+The server runs in Docker, from the `crystaldba/postgres-mcp` image.
+The `postgres-mcp` package on PyPI does not install with `uvx` anymore, because PyPI removed a version of a package that it needs.
 Start the database with the commands above.
 Open this project folder in an MCP client that supports `.mcp.json`.
 Enable the `postgres` server in that client.
 
-The client runs `uvx postgres-mcp --access-mode=unrestricted` with the connection URL from `.mcp.json`.
+The client starts the image with the connection URL from `.mcp.json`.
+Inside the MCP container, `localhost` is the container itself.
+The image changes `localhost` in the URL to `host.docker.internal`, the address of your machine.
 After you change `.mcp.json`, restart or reconnect the MCP server in your client.
 If your client stores configuration elsewhere, copy the `postgres` entry into its `mcpServers` configuration.
 
 To run the MCP server manually in a terminal:
 
 ```sh
-DATABASE_URI='postgresql://abakus:local-dev-password@localhost:5432/abakus_workshop' \
-  uvx postgres-mcp --access-mode=unrestricted
+DATABASE_URI='postgresql://abakus:local-dev-password@localhost:55432/abakus_workshop' \
+  docker run -i --rm -e DATABASE_URI crystaldba/postgres-mcp --access-mode=unrestricted
 ```
 
 The server uses stdio (standard input and output) to communicate with an MCP client.

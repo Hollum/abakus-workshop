@@ -12,7 +12,7 @@
         "--access-mode=unrestricted"
       ],
       "env": {
-        "DATABASE_URI": "postgresql://abakus:local-dev-password@localhost:5432/abakus_workshop"
+        "DATABASE_URI": "postgresql://abakus:local-dev-password@localhost:55432/abakus_workshop"
       }
     }
   }

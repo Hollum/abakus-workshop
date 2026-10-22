@@ -34,12 +34,12 @@ The team can be new to programming. Talk to them in short, plain Norwegian (bokm
 
    The step is done when the output shows a server version. If it does not, show the error from `docker info` to the team, and help them from it.
 
-2. Start the container `abakus-postgres`. Run `docker inspect --format '{{.State.Status}}' abakus-postgres`.
-   - An error that says there is no such object: the container does not exist. Run the build command and the start command from `## Local PostgreSQL` in `README.md`.
+2. Start the container `abakus-postgres`. Run `docker container inspect --format '{{.State.Status}}' abakus-postgres`.
+   - `No such container`: the container does not exist. Run the build command and the start command from `## Local PostgreSQL` in `README.md`.
    - `running`: go to step 3.
    - Any other state: run `docker start abakus-postgres`.
 
-   If port 5432 is already in use, find the program that listens on it (for example with `lsof -nP -iTCP:5432 -sTCP:LISTEN`). Tell the team which program it is, and ask them to stop it. Then start the container again.
+   If the port in the start command is already in use, find the program that listens on it (for example with `lsof -nP -iTCP:<port> -sTCP:LISTEN`). Tell the team which program it is, and ask them to stop it. Then start the container again.
 
    The container and the volume `abakus-postgres-data` hold the team's data. Keep them. Remove them only if the team asks for it.
 
@@ -53,11 +53,11 @@ The team can be new to programming. Talk to them in short, plain Norwegian (bokm
 
 4. If `.env.local` does not exist, copy `.env.template` to `.env.local`. It holds the connection URL (`DATABASE_URL`) for the team's app.
 
-5. Download the MCP server. Read the `postgres` entry in `.mcp.json`. If its `command` is not installed, tell the team how to install it (for `uvx`: https://docs.astral.sh/uv/getting-started/installation/), and stop. Otherwise, run the `command` with its `args` and `--help` at the end. The first run downloads the server, so the connection in step 6 does not time out.
+5. Download the MCP server. Read the `postgres` entry in `.mcp.json`. Run its `command` with its `args` and `--help` at the end. The first run downloads the server, so the connection in step 6 does not time out.
 
    The step is done when the output shows the usage text (`usage: postgres-mcp`). If the output shows an error, the MCP server cannot start. Show the error to the team, tell them to ask the workshop host for help, and stop.
 
-6. Connect the MCP server. Claude Code starts MCP servers when the session starts. If the database was down then, the `postgres` server is not connected. Ask the team to run `/mcp`, select `postgres`, and enable or reconnect it. Wait until they say it is done.
+6. Connect the MCP server. Claude Code starts MCP servers when the session starts. If the database was down then, the `postgres` server is not connected. Ask the team to run `/mcp`, select `postgres`, and enable or reconnect it. Wait until they say it is done. If the reconnect times out after 30 seconds, the MCP server could not reach the database: go back to step 3.
 
 7. Check the connection. Call the `postgres` MCP tool that lists schemas. The step is done when the result includes the schema `public`. If the tool is not available, ask the team what `/mcp` shows for `postgres`, and help them from that output.
 
