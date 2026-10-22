@@ -37,6 +37,7 @@ Dere kan snakke med en kunde for å finne ut hva brukerne trenger. Kjør `/talk-
 1. Kjør `/grill-with-docs`. Agenten stiller dere spørsmål helt til dere er enige om hva dere skal bygge. Underveis skriver den beslutninger og begreper til filer.
 2. Kjør `/to-spec`. Agenten lager en spesifikasjon (spec) fra samtalen.
 3. Kjør `/to-tickets`. Agenten deler spesifikasjonen i oppgaver (tickets). Hver ticket sier hvilke andre tickets den venter på.
+4. Velg `/implement` eller `/implement-spec` for å implementere ticketene. Med `/implement` implementerer agenten i økten deres én ticket eller noen få om gangen. `/implement-spec` implementerer hele spesifikasjonen. Den starter flere agenter som jobber på hver sin ticket samtidig, og samler arbeidet på én branch.
 
 Dere er ferdige når dere har tickets for hjemmesiden og for databasen, og vet hvilke tickets som kan gjøres parallelt.
 
