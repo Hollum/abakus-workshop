@@ -20,7 +20,7 @@ Bruk `/note` gjennom hele arbeidet. Hver gang dere tar en beslutning, ser agente
 
 ## 1. Oppsett
 
-Start databasen, og koble til MCP-serveren `postgres`. Følg stegene i `README.md`.
+Kjør `/setup`. Agenten starter databasen og hjelper dere med å koble til MCP-serveren `postgres`. Stegene står også i `README.md`.
 
 Dere er ferdige når `pg_isready` svarer `accepting connections`, og `/mcp` i Claude Code viser at `postgres` er koblet til.
 

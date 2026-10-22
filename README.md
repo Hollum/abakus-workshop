@@ -1,5 +1,7 @@
 # Abakus workshop
 
+In Claude Code, `/setup` runs the steps below for you.
+
 ## Local PostgreSQL
 
 Run these commands from the folder that contains `Dockerfile`.

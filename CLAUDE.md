@@ -6,7 +6,7 @@ This is a starter repo for a workshop where teams use Claude Code to build a web
 
 - `workshop/PRODUCT_BRIEF.md`: the product the team builds, written by `/generate-product`.
 - `workshop/NOTES.md`: the team's reflection sheet, written by `/note`.
-- `.claude/commands/`: the workshop commands `/generate-product`, `/talk-with-customer` and `/note`.
+- `.claude/commands/`: the workshop commands `/setup`, `/generate-product`, `/talk-with-customer` and `/note`.
 - `.agents/skills/`: the skills, installed from mattpocock/skills and pinned in `skills-lock.json`. `.claude/skills/` holds symlinks to them.
 
 PostgreSQL runs in Docker. `README.md` has the setup steps, and `.env.template` has the connection URL (`DATABASE_URL`). The `postgres` MCP server in `.mcp.json` connects to the same database.
