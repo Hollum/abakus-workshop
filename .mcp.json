@@ -1,9 +1,14 @@
 {
   "mcpServers": {
     "postgres": {
-      "command": "uvx",
+      "command": "docker",
       "args": [
-        "postgres-mcp",
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "DATABASE_URI",
+        "crystaldba/postgres-mcp",
         "--access-mode=unrestricted"
       ],
       "env": {
