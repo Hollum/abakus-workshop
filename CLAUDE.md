@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a starter repo for a workshop where teams use Claude Code to build a web app for a fictional product. It has no application code yet, so it has no build, lint or test commands. The team chooses the stack. Read what the team has built before you assume one.
 
+- `README.md`: the workshop plan for the students, with the setup steps for the database and the MCP server in its last section, `## Teknisk oppsett`.
 - `workshop/PRODUCT_BRIEF.md`: the product the team builds, written by `/generate-product`.
 - `workshop/NOTES.md`: the team's reflection sheet, written by `/note`.
 - `.claude/commands/`: the workshop commands `/setup`, `/generate-product`, `/talk-with-customer` and `/note`.
 - `.agents/skills/`: the skills, installed from mattpocock/skills and pinned in `skills-lock.json`. `.claude/skills/` holds symlinks to them.
 
-PostgreSQL runs in Docker. `README.md` has the setup steps, and `.env.template` has the connection URL (`DATABASE_URL`). The `postgres` MCP server in `.mcp.json` connects to the same database.
+PostgreSQL runs in Docker. `README.md` has the setup steps under `## Teknisk oppsett`, and `.env.template` has the connection URL (`DATABASE_URL`). The `postgres` MCP server in `.mcp.json` connects to the same database.
 
-Text for the students (the product brief and the notes) is in Norwegian bokmål. Instructions for agents (commands, skills and this file) are in English.
+Text for the students (the README, the product brief and the notes) is in Norwegian bokmål. Instructions for agents (commands, skills and this file) are in English.
 
 ## Issue tracker
 

@@ -3,7 +3,7 @@ description: Start the PostgreSQL database in Docker and connect the postgres MC
 disable-model-invocation: true
 ---
 
-Get the team's machine ready for the workshop: PostgreSQL runs in Docker, and the `postgres` MCP server is connected to it. `README.md` has the commands. This command finds out which steps the machine still needs, and runs them.
+Get the team's machine ready for the workshop: PostgreSQL runs in Docker, and the `postgres` MCP server is connected to it. The section `## Teknisk oppsett` in `README.md` has the commands. This command finds out which steps the machine still needs, and runs them.
 
 The team can be new to programming. Talk to them in short, plain Norwegian (bokmål):
 
@@ -35,7 +35,7 @@ The team can be new to programming. Talk to them in short, plain Norwegian (bokm
    The step is done when the output shows a server version. If it does not, show the error from `docker info` to the team, and help them from it.
 
 2. Start the container `abakus-postgres`. Run `docker container inspect --format '{{.State.Status}}' abakus-postgres`.
-   - `No such container`: the container does not exist. Run the build command and the start command from `## Local PostgreSQL` in `README.md`.
+   - `No such container`: the container does not exist. Run the build command and the start command from `### Database (PostgreSQL)` in `README.md`.
    - `running`: go to step 3.
    - Any other state: run `docker start abakus-postgres`.
 
